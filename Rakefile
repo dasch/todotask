@@ -7,6 +7,8 @@ require 'rtagstask'
 
 require 'lib/todotask/version'
 
+SVN_URL = 'svn+ssh://dasch@rubyforge.org/var/svn/todotask'
+
 Rake::TestTask.new(:test)
 
 Rake::RDocTask.new(:docs) do |t|
@@ -27,6 +29,17 @@ end
 Rake::GemPackageTask.new(spec) do |t|
   t.need_tar = true
 end
+
+namespace :svn do
+  desc 'Tag this release'
+  task :tag do
+    sh "svn copy #{SVN_URL}/trunk " +
+       "#{SVN_URL}/tags/release-#{ToDoTask::VERSION} " +
+       '-m "tagging release ' + ToDoTask::VERSION + '"'
+  end
+end
+
+task :release => [:'svn:tag', :package]
 
 desc 'Install gem'
 task :install => :package do
