@@ -1,5 +1,3 @@
-
-require 'rake'
 require 'rake/tasklib'
 
 class ToDoTask < Rake::TaskLib
