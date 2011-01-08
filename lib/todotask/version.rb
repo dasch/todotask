@@ -1,4 +1,5 @@
+require 'rake/tasklib'
 
-class ToDoTask
+class ToDoTask < Rake::TaskLib
   VERSION = '0.0.3'
 end

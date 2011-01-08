@@ -1,3 +1,5 @@
+fixtures/**/*.out
+fixtures/**/*.outerr
 pkg/*
 *.gem
 .bundle
