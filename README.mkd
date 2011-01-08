@@ -31,5 +31,5 @@ Simply run `gem install todotask`.
 Contributors
 ------------
 
-* Daniel Schierbeck ([http://github.com/dasch](dasch))
-* Nils Jonsson ([http://github.com/njonsson](njonsson))
+* Daniel Schierbeck ([dasch](http://github.com/dasch))
+* Nils Jonsson ([njonsson](http://github.com/njonsson))
