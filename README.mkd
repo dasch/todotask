@@ -1,0 +1,35 @@
+ToDoTask
+========
+
+A simple Rake command that extracts and displays `TODO` items from your source code.
+
+
+Usage
+-----
+
+Simply create a new `ToDoTask` in your Rakefile:
+
+    ToDoTask.new
+
+Running `rake todo` will now output all `TODO` items in your `lib/` and `test/`
+directories:
+
+    test/foomatic/foo.rb:
+     * 007: Simplify!
+     * 010: Make this more awesome!
+    
+    
+    ToDo items: 2
+
+
+Installation
+------------
+
+Simply run `gem install todotask`.
+
+
+Contributors
+------------
+
+* Daniel Schierbeck ([http://github.com/dasch](dasch))
+* Nils Jonsson ([http://github.com/njonsson](njonsson))
