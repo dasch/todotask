@@ -61,7 +61,7 @@ Feature: Listing TODO items
     Then the output should contain:
       """
       lib/monkey.rb:
-       * TODO: Make this lazy monkey do something other than drinking! (line 2)
+       * TODO:  Make this lazy monkey do something other than drinking! (line 2)
        * FIXME: Make the barf sound better (line 3)
 
       ToDo items: 2

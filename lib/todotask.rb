@@ -31,8 +31,14 @@ class ToDoTask < Rake::TaskLib
 
       items.each do |file, list|
         puts "\n#{file}:"
+
+        annotation_types = list.map {|i| i.annotation }.uniq
+
+        # The size of the annotation type field, including the ":"
+        field_size = annotation_types.map {|a| a.length }.max + 1
+
         list.each do |item|
-          puts " * %s: %s (line %d)" % [item.annotation, item.text, item.lineno]
+          puts " * %- *s %s (line %d)" % [field_size, item.annotation + ":", item.text, item.lineno]
         end
       end
 
