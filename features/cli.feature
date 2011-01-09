@@ -25,7 +25,10 @@ Feature: Listing TODO items
       end
       """
     When I run "rake todo"
-    Then the output should contain "ToDo items: 0"
+    Then the output should contain:
+      """
+      ToDo items: 0
+      """
 
   Scenario: A few TODO's in a single file
     Given a file named "lib/monkey.rb" with:
@@ -36,6 +39,12 @@ Feature: Listing TODO items
       end
       """
     When I run "rake todo"
-    Then the output should contain "002: Make this lazy monkey do something!"
-    And the output should contain "003: Also, can we make it dance?"
-    And the output should contain "ToDo items: 2"
+    Then the output should contain:
+      """
+      lib/monkey.rb:
+       * 002: Make this lazy monkey do something!
+       * 003: Also, can we make it dance?
+
+
+      ToDo items: 2
+      """
