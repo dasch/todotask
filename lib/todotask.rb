@@ -34,7 +34,7 @@ class ToDoTask < Rake::TaskLib
       end
 
       total = items.inject(0){|total, (file, list)| total + list.size }
-      puts "\n\nToDo items: #{total}"
+      puts "\nToDo items: #{total}"
     end
   end
 

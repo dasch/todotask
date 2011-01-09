@@ -45,6 +45,5 @@ Feature: Listing TODO items
        * 002: Make this lazy monkey do something!
        * 003: Also, can we make it dance?
 
-
       ToDo items: 2
       """
