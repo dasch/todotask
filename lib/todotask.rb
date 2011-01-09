@@ -22,8 +22,8 @@ class ToDoTask < Rake::TaskLib
         lineno = 0
         list = File.readlines(file).inject([]) do |list, line|
           lineno += 1
-          next list unless line =~ /#\s*(?:#{@annotations.join('|')}):?\s+(.*)/i
-          list << @@item.new(file, lineno, $1)
+          next list unless line =~ /#\s*(#{@annotations.join('|')}):?\s+(.*)/i
+          list << @@item.new(file, lineno, $1, $2)
         end
 
         items[file] = list unless list.empty?
@@ -32,7 +32,7 @@ class ToDoTask < Rake::TaskLib
       items.each do |file, list|
         puts "\n#{file}:"
         list.each do |item|
-          puts " * %03d: %s" % [item.lineno, item.text]
+          puts " * %s: %s (line %d)" % [item.annotation, item.text, item.lineno]
         end
       end
 
@@ -41,5 +41,5 @@ class ToDoTask < Rake::TaskLib
     end
   end
 
-  @@item = Struct.new(:filename, :lineno, :text)
+  @@item = Struct.new(:filename, :lineno, :annotation, :text)
 end
