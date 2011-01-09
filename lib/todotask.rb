@@ -5,9 +5,12 @@ class ToDoTask < Rake::TaskLib
 
   attr_accessor :todo_files
 
+  attr_accessor :annotations
+
   def initialize(name = :todo)
     @name = name
     @todo_files = FileList['lib/**/*.rb', 'test/**/*.rb']
+    @annotations = %w(TODO)
 
     yield self if block_given?
 
@@ -19,7 +22,7 @@ class ToDoTask < Rake::TaskLib
         lineno = 0
         list = File.readlines(file).inject([]) do |list, line|
           lineno += 1
-          next list unless line =~ /#\s*TODO:?\s+(.*)/i
+          next list unless line =~ /#\s*(?:#{@annotations.join('|')}):?\s+(.*)/i
           list << @@item.new(file, lineno, $1)
         end
 
