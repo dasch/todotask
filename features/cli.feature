@@ -47,3 +47,22 @@ Feature: Listing TODO items
 
       ToDo items: 2
       """
+
+  Scenario: Both TODO's and FIXME's
+    Given a file named "lib/monkey.rb" with:
+      """
+      class Monkey
+        # TODO: Make this lazy monkey do something other than drinking!
+        # FIXME: Make the barf sound better
+        def barf; puts "fffff..."; end
+      end
+      """
+    When I run "rake todo"
+    Then the output should contain:
+      """
+      lib/monkey.rb:
+       * TODO: Make this lazy monkey do something other than drinking! (line 2)
+       * FIXME: Make the barf sound better (line 3)
+
+      ToDo items: 2
+      """

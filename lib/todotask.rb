@@ -10,7 +10,7 @@ class ToDoTask < Rake::TaskLib
   def initialize(name = :todo)
     @name = name
     @todo_files = FileList['lib/**/*.rb', 'test/**/*.rb']
-    @annotations = %w(TODO)
+    @annotations = %w(TODO FIXME)
 
     yield self if block_given?
 
