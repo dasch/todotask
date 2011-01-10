@@ -12,12 +12,19 @@ Simply create a new `ToDoTask` in your Rakefile:
     ToDoTask.new
 
 Running `rake todo` will now output all `TODO` items in your `lib/` and `test/`
-directories:
+directories. Say you have a file `test/foomatic/foo.rb` with the contents
 
+    class Monkey
+      # TODO: Make this lazy monkey do something!
+      # TODO: Also, can we make it dance?
+    end
+
+When you run `rake todo`, you'll see
+
+	$ rake todo
     test/foomatic/foo.rb:
-     * 007: Simplify!
-     * 010: Make this more awesome!
-    
+     * TODO: Make this lazy monkey do something! (line 2)
+     * TODO: Also, can we make it dance? (line 3)
     
     ToDo items: 2
 
